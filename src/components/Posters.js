@@ -3,8 +3,6 @@ import React, {Component} from 'react';
 
 class Posters extends Component {
 
-
-    
     
 
     render(){
@@ -16,33 +14,44 @@ class Posters extends Component {
             console.log('this.props',this.props);
         }
 
+       
 
         const moviePosters = this.props.posters;
+
+
+       // {console.log('moviePosters',moviePosters)}
 
         return(
             <div>
                 {
-                    moviePosters.map(moviePoster =>{
+                moviePosters.map((moviePoster,index) =>{
 
-                        const {movie,poster} = moviePoster;
-                        const id = moviePosters.id;
+                    const {movie,poster} = moviePoster;
+
+                    const id = index;
+
+                    {console.log(id)};
+
+                    return(
 
                         
+                        <div key={id} >
 
-                        return(
-                            <div key={id} >
-                                <img src={poster} 
-                                alt='movie poster image' 
-                                className='poster-image'
-                                />
-                                <p className = 'movieText'>{movie}</p>
-                                <p>{id}</p>
-                            </div>
-                        )
+                            <img
+                            src={poster}
+                            alt='movie image'
+                            className='poster-image'
+                            title={movie}
+                            />
+
+                            
+                        </div>
+                    )
 
                     })
                 }
             </div>
+
         )
     }
 

@@ -27,6 +27,8 @@ class Search extends Component {
                     onKeyPress={this.handleKeyPress}
                     placeholder = 'Search for a poster'
                 />
+                
+
 
                 <button onClick ={this.searchPoster}>Search</button>
             </div>

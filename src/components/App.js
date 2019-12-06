@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Posters from './Posters';
 import Search from './Search';
 const API_ADDRESS = 'http://www.omdbapi.com/?apikey=e572eb3b&s=';
+import image from "../assets/poster-finder-logo.png";
 
 class App extends Component {
 
@@ -39,11 +40,10 @@ class App extends Component {
 
     render(){
 
-        console.log(this.state);
 
         return (
          <div>
-             <h2>Poster Finder</h2>
+             <img src={image} className='logo' alt='logo'></img>
              
              <Search searchPoster = {this.searchPoster} />
              <Posters posters={this.state.moviePosters}/>

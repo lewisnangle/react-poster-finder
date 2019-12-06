@@ -24144,20 +24144,24 @@ function (_Component) {
         console.log('this.props', this.props);
       }
 
-      var moviePosters = this.props.posters;
-      return _react.default.createElement("div", null, moviePosters.map(function (moviePoster) {
+      var moviePosters = this.props.posters; // {console.log('moviePosters',moviePosters)}
+
+      return _react.default.createElement("div", null, moviePosters.map(function (moviePoster, index) {
         var movie = moviePoster.movie,
             poster = moviePoster.poster;
-        var id = moviePosters.id;
+        var id = index;
+        {
+          console.log(id);
+        }
+        ;
         return _react.default.createElement("div", {
           key: id
         }, _react.default.createElement("img", {
           src: poster,
-          alt: "movie poster image",
-          className: "poster-image"
-        }), _react.default.createElement("p", {
-          className: "movieText"
-        }, movie), _react.default.createElement("p", null, id));
+          alt: "movie image",
+          className: "poster-image",
+          title: movie
+        }));
       }));
     }
   }]);
@@ -24260,7 +24264,9 @@ function (_Component) {
 
 var _default = Search;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js"}],"components/App.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js"}],"assets/poster-finder-logo.png":[function(require,module,exports) {
+module.exports = "/poster-finder-logo.8c372d35.png";
+},{}],"components/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -24275,6 +24281,8 @@ require("bootstrap/dist/css/bootstrap.min.css");
 var _Posters = _interopRequireDefault(require("./Posters"));
 
 var _Search = _interopRequireDefault(require("./Search"));
+
+var _posterFinderLogo = _interopRequireDefault(require("../assets/poster-finder-logo.png"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -24360,8 +24368,11 @@ function (_Component) {
   _createClass(App, [{
     key: "render",
     value: function render() {
-      console.log(this.state);
-      return _react.default.createElement("div", null, _react.default.createElement("h2", null, "Poster Finder"), _react.default.createElement(_Search.default, {
+      return _react.default.createElement("div", null, _react.default.createElement("img", {
+        src: _posterFinderLogo.default,
+        className: "logo",
+        alt: "logo"
+      }), _react.default.createElement(_Search.default, {
         searchPoster: this.searchPoster
       }), _react.default.createElement(_Posters.default, {
         posters: this.state.moviePosters
@@ -24374,7 +24385,7 @@ function (_Component) {
 
 var _default = App;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","bootstrap/dist/css/bootstrap.min.css":"../node_modules/bootstrap/dist/css/bootstrap.min.css","./Posters":"components/Posters.js","./Search":"components/Search.js"}],"index.css":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","bootstrap/dist/css/bootstrap.min.css":"../node_modules/bootstrap/dist/css/bootstrap.min.css","./Posters":"components/Posters.js","./Search":"components/Search.js","../assets/poster-finder-logo.png":"assets/poster-finder-logo.png"}],"index.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -24437,7 +24448,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56160" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65069" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
