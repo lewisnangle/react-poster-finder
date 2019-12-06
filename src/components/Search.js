@@ -28,9 +28,10 @@ class Search extends Component {
                     placeholder = 'Search for a poster'
                 />
                 
+                
 
 
-                <button onClick ={this.searchPoster}>Search</button>
+                <button variant="outline-dark" onClick ={this.searchPoster}>Search</button>
             </div>
         )
     }
